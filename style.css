@@ -22,10 +22,10 @@ header {
 }
 
 body {
-    padding: 2em;
+    padding: 1em;
 }
 
-div {
+#canvas-container {
     padding: 5em;
     min-width: 900px;
     width: 900px;
@@ -34,9 +34,16 @@ div {
     max-width: 75%;
     max-height: auto;
     margin: auto;
-    margin-top: 3em;
-    margin-bottom: 3em;
-    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    justify-items: center;
+}
+
+canvas {
+    width: 900px;
+    height: 700px;
+    border: 1px dashed darkblue;
+    display: inline;
 }
 
 footer {
@@ -51,7 +58,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     background-color: #a399a0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
