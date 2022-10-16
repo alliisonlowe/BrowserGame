@@ -17,13 +17,13 @@ export class Sitting extends State {
         this.player = player;
     }
     enter() {
-        this.player.frameX=0;
+        this.player.frameX = 0;
         this.player.frameY = 5;
         this.player.maxFrame = 4;
     }
     handleInput(input) {
         if (input.includes('ArrowLeft') || input.includes('ArrowRight')) {
-            this.player.setState(states.RUNNING);
+            this.player.setState(states.RUNNING, 1);
         }
     }
 }
@@ -34,15 +34,15 @@ export class Running extends State {
         this.player = player;
     }
     enter() {
-        this.player.frameX=0;
+        this.player.frameX = 0;
         this.player.frameY = 3;
         this.player.maxFrame = 6;
     }
     handleInput(input) {
         if (input.includes('ArrowDown')) {
-            this.player.setState(states.SITTING);
-        } else if (input.includes('ArrowUp')){
-            this.player.setState(states.JUMPING);
+            this.player.setState(states.SITTING, 0);
+        } else if (input.includes('ArrowUp')) {
+            this.player.setState(states.JUMPING, 1);
         }
     }
 }
@@ -53,14 +53,14 @@ export class Jumping extends State {
         this.player = player;
     }
     enter() {
-        this.player.frameX=0;
+        this.player.frameX = 0;
         this.player.maxFrame = 6;
-        if(this.player.onGround()) this.player.vy -=30;
+        if (this.player.onGround()) this.player.vy -= 25;
         this.player.frameY = 1;
     }
     handleInput(input) {
         if (this.player.vy > this.player.weight) {
-            this.player.setState(states.FALLING);
+            this.player.setState(states.FALLING, 1);
         }
     }
 }
@@ -71,13 +71,13 @@ export class Falling extends State {
         this.player = player;
     }
     enter() {
-        this.player.frameX=0;
+        this.player.frameX = 0;
         this.player.maxFrame = 6;
         this.player.frameY = 2;
     }
     handleInput(input) {
         if (this.player.onGround()) {
-            this.player.setState(states.RUNNING);
+            this.player.setState(states.RUNNING, 1);
         }
     }
 }

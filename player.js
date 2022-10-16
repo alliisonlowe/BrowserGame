@@ -13,8 +13,8 @@ export class Player {
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 5;
-        this.fps =15;
-        this.frameInterval = 1000/this.fps;
+        this.fps = 15;
+        this.frameInterval = 1000 / this.fps;
         this.frameTimer = 0;
 
         this.speed = 0;
@@ -41,11 +41,11 @@ export class Player {
         else this.vy = 0;
 
         //sprite animation
-        if(this.frameTimer>this.frameInterval){
+        if (this.frameTimer > this.frameInterval) {
             this.frameTimer = 0;
             if (this.frameX < this.maxFrame) this.frameX++;
             else this.frameX = 0;
-        }else{
+        } else {
             this.frameTimer += deltaTime;
         }
     }
@@ -55,8 +55,9 @@ export class Player {
     onGround() {
         return this.y >= this.game.height - this.height - this.game.groundMargin;
     }
-    setState(state) {
+    setState(state, speed) {
         this.currentState = this.states[state];
+        this.game.speed = this.game.maxSpeed * speed;
         this.currentState.enter();
     }
 }
