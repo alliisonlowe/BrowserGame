@@ -11,11 +11,13 @@ window.addEventListener('load', function () {
         constructor(width, height) {
             this.width = width;
             this.height = height;
+            this.groundMargin = 50;
             this.Player = new Player(this);
             this.input = new InputHandler();
+           
         }
-        update() {
-            this.Player.update(this.input.keys);
+        update(deltaTime) {
+            this.Player.update(this.input.keys, deltaTime);
         }
         draw(context) {
             this.Player.draw(context);
@@ -24,13 +26,16 @@ window.addEventListener('load', function () {
 
     const game = new Game(canvas.width, canvas.height);
     console.log(game);
+    let lastTime = 0;
 
-    function animate(){
+    function animate(timeStamp){
+        const deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        game.update();
+        game.update(deltaTime);
         game.draw(ctx);
         requestAnimationFrame(animate);
     }
-    animate();
+    animate(0);
 });
 
