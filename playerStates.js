@@ -22,7 +22,7 @@ export class Sitting extends State {
         this.player.maxFrame = 4;
     }
     handleInput(input) {
-        if (input.includes('ArrowLeft') || input.includes('ArrowRight')) {
+        if (input.includes('A') || input.includes('D')||input.includes('a') || input.includes('d')) {
             this.player.setState(states.RUNNING, 1);
         }
     }
@@ -39,9 +39,9 @@ export class Running extends State {
         this.player.maxFrame = 6;
     }
     handleInput(input) {
-        if (input.includes('ArrowDown')) {
+        if (input.includes('S') || input.includes('s')) {
             this.player.setState(states.SITTING, 0);
-        } else if (input.includes('ArrowUp')) {
+        } else if (input.includes('W') || input.includes('w')) {
             this.player.setState(states.JUMPING, 1);
         }
     }
