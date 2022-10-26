@@ -3,8 +3,8 @@ import { Falling, Jumping, Running, Sitting } from './playerStates.js';
 export class Player {
     constructor(game) {
         this.game = game;
-        this.width = 100;
-        this.height = 91.3;
+        this.width = 78;
+        this.height = 70;
         this.x = 0;
         this.y = this.game.height - this.height - this.game.groundMargin;
         this.vy = 0;
@@ -12,7 +12,7 @@ export class Player {
         this.image = document.getElementById('player')
         this.frameX = 0;
         this.frameY = 0;
-        this.maxFrame = 5;
+        this.maxFrame = 4;
         this.fps = 15;
         this.frameInterval = 1000 / this.fps;
         this.frameTimer = 0;

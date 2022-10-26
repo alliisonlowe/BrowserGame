@@ -18,8 +18,8 @@ export class Sitting extends State {
     }
     enter() {
         this.player.frameX = 0;
-        this.player.frameY = 5;
-        this.player.maxFrame = 4;
+        this.player.frameY = 0;
+        this.player.maxFrame = 0;
     }
     handleInput(input) {
         if (input.includes('A') || input.includes('D')||input.includes('a') || input.includes('d')) {
@@ -35,8 +35,8 @@ export class Running extends State {
     }
     enter() {
         this.player.frameX = 0;
-        this.player.frameY = 3;
-        this.player.maxFrame = 6;
+        this.player.frameY = 0;
+        this.player.maxFrame = 4;
     }
     handleInput(input) {
         if (input.includes('S') || input.includes('s')) {
@@ -54,9 +54,9 @@ export class Jumping extends State {
     }
     enter() {
         this.player.frameX = 0;
-        this.player.maxFrame = 6;
+        this.player.maxFrame = 4;
         if (this.player.onGround()) this.player.vy -= 25;
-        this.player.frameY = 1;
+        this.player.frameY = 0;
     }
     handleInput(input) {
         if (this.player.vy > this.player.weight) {
@@ -72,8 +72,8 @@ export class Falling extends State {
     }
     enter() {
         this.player.frameX = 0;
-        this.player.maxFrame = 6;
-        this.player.frameY = 2;
+        this.player.maxFrame = 0;
+        this.player.frameY = 0;
     }
     handleInput(input) {
         if (this.player.onGround()) {
