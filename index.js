@@ -1,6 +1,7 @@
 import { Player } from './player.js';
 import { InputHandler } from './input.js';
 import { Background } from './background.js';
+import { Coin } from './currency.js';
 
 window.addEventListener('load', function () {
     const canvas = document.getElementById('canvas1')
@@ -14,19 +15,38 @@ window.addEventListener('load', function () {
             this.height = height;
             this.groundMargin = 80;
             this.speed = 0;
-            this.maxSpeed=3;
+            this.maxSpeed = 3;
             this.background = new Background(this);
             this.Player = new Player(this);
             this.input = new InputHandler();
-
+            this.coins = [];
+            this.coinTimer = 0;
+            this.coinInterval = 1000;
         }
         update(deltaTime) {
             this.background.update();
             this.Player.update(this.input.keys, deltaTime);
+            //create coins
+            if (this.coinTimer > this.coinInterval) {
+                this.addCoin();
+                this.coinTimer = 0;
+            } else {
+                this.coinTimer += deltaTime
+            }
+            this.coins.forEach(coin => {
+                coin.update(deltaTime);
+            })
         }
         draw(context) {
             this.background.draw(context);
             this.Player.draw(context);
+
+            this.coins.forEach(coin => {
+                coin.draw(context);
+            })
+        }
+        addCoin() {
+            this.coins.push(new Coin(this));
         }
     }
 

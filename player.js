@@ -18,7 +18,7 @@ export class Player {
         this.frameTimer = 0;
 
         this.speed = 0;
-        this.maxSpeed = 5;
+        this.maxSpeed = 2;
 
         this.states = [new Sitting(this), new Running(this), new Jumping(this), new Falling(this)];
         this.currentState = this.states[0];
@@ -59,5 +59,8 @@ export class Player {
         this.currentState = this.states[state];
         this.game.speed = this.game.maxSpeed * speed;
         this.currentState.enter();
+    }
+    checkCollision(){
+        this.game
     }
 }
