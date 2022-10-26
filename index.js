@@ -2,6 +2,7 @@ import { Player } from './player.js';
 import { InputHandler } from './input.js';
 import { Background } from './background.js';
 import { Coin } from './currency.js';
+import {Platform} from './platform.js'
 
 window.addEventListener('load', function () {
     const canvas = document.getElementById('canvas1')
@@ -35,6 +36,7 @@ window.addEventListener('load', function () {
             }
             this.coins.forEach(coin => {
                 coin.update(deltaTime);
+                if (coin.markedForDeletion) this.coins.splice(this.coins.indexOf(coin), 1);
             })
         }
         draw(context) {

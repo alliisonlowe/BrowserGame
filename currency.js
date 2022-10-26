@@ -29,13 +29,13 @@ export class Coin extends Currency {
     constructor(game) {
         super();
         this.game = game;
-        this.width = 30;
-        this.height = 30;
+        this.width = 35;
+        this.height = 40;
         this.x = this.game.width;
-        this.y = 370;
+        this.y = 360;
         this.speedX = 1;
         this.speedY = 0;
-        this.maxFrame = 0;
+        this.maxFrame = 6;
         this.image = document.getElementById('coin');
     }
     update(deltaTime) {
